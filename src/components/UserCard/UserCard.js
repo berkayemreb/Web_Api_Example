@@ -1,11 +1,11 @@
 import React from "react";
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
 import styles from './UserCard.style';
 
-const UserCard = (props) => {
+const UserCard = ({ name }) => {
     return (
-        <View>
-
+        <View style={styles.container}>
+            <Text style={styles.name}>{name}</Text>
         </View>
     )
 }
