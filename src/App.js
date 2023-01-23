@@ -3,11 +3,16 @@ import axios from 'axios';
 
 export default function App() {
 
-  const fetchData = () => {
+  const fetchData = async () => {
 
-    axios.get('https://jsonplaceholder.typicode.com/users')
-      .then(response => console.log(response))
-      .catch(error => console.log(error))
+    try {
+      const response = await axios.get('https://jsonplaceholder.typicode.com/users');
+      console.log(response);
+
+    } catch (error) {
+      console.log("error verdi: ", error);
+    }
+
   }
 
   return (
@@ -26,8 +31,10 @@ axios.get islemi yaparken gelen veri bir PROMISE yapısı olarak gelir.
 Promise yapıları asenkron yapılardır. Yani sunucuya istek atarız ve geri yanıt gelene kadar bu işlemin bitmesini beklemeyiz ( süresi ne zaman biterde veri gelir belli değiş çünkü)
 veriler gelene kadar kullanıcıyı baska bir arayüzde karsılarız. Bu olaya asenkron yapılar denir ve promise yapıları buna örnektir.
 
-                               -Then && Catch yapısı-
-Sunucuya istek atma işlemi (axios.get) yapıldıktan sonra kod sırası then ve catchi görmeden kaldığı yerden devam eder. Ne zaman istek cevabı gelirse o zaman then veya catch kısmı sıraya dahil edilir ve calısır (asenkron islemi)
-Eğer ki istek sonucu bir cevap gelirse (her sey yolunda) then bloğu calısır
-Eğer ki istek esnasında bir problem varsa (internetten kaynaklı, sunucudan kaynaklı vs.) catch kısmı calısır ve hata mesajını yakalayabiliriz.  
+                               -Async && Await yapısı-
+Asenkron olan islemi senkron yapmak için async && await yapısını kullanırız. Yani bir yere istek attıktan sonra oradan cevap gelene kadar diğer işlemleri yapma ve bekle anlamına gelir.
+fonksiyonu async olarak tanımlamadan await kullanamazsın. 
+Then catch ile async await yapısını karsılastıramazsın cunku ihtiyaca göre her ikisi de kendi içinde avantajları vardır.
+Async await yapısında hata olursa eğer onu yakalamak istersek try catch kod bloğunu kullanabiliriz.                                
+
 */
