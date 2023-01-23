@@ -8,7 +8,7 @@ export default function App() {
 
   const [userList, setUserList] = useState([]);
 
-  const renderUser = ({ item }) => <UserCard name={item.name} />
+  const renderUser = ({ item }) => <UserCard name={item.name} email={item.email} username={item.username} />
 
   const fetchData = async () => {
 
